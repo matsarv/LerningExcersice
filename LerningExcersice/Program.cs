@@ -53,7 +53,7 @@ namespace LerningExcersice
                     Console.ResetColor();
                 }
                 //Console.WriteLine("Hello World!");
-                //Console.ReadKey();
+                //Console.ReadKey(); 
             }
         }
 
@@ -97,7 +97,7 @@ namespace LerningExcersice
             string fox1 = a.ToLower();
             string fox2 = char.ToUpper(fox1[0]) + fox1.Substring(1);
             string fox3 = fox2.Replace("quick ", "brown ");
-            String fox4 = fox3.Insert(30, "lazy ");
+            string fox4 = fox3.Insert(30, "lazy ");
             return fox4;
         }
 
