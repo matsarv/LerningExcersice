@@ -14,7 +14,7 @@ namespace LerningExcersice
     {
         static void Main(string[] args)
         {
-            
+
 
             var keepAlive = true;
             while (keepAlive)
@@ -36,7 +36,7 @@ namespace LerningExcersice
 
                         case 3:
                             string FirstLastName = RunExcerciseTree();
-                            Console.WriteLine("Your name is " + FirstLastName );
+                            Console.WriteLine("Your name is " + FirstLastName);
                             break;
 
                         case 4:
@@ -88,6 +88,13 @@ namespace LerningExcersice
                         case 13:
                             RunExcercise13();
                             break;
+                        case 14:
+                            RunExcercise14();
+                            break;
+
+                        case 18:
+                            RunExcercise18();
+                            break;
 
                         case -1:
 
@@ -111,6 +118,7 @@ namespace LerningExcersice
                     Console.WriteLine("This is not a valid assigment number!");
                     Console.ResetColor();
                 }
+
             }
         }
 
@@ -154,7 +162,7 @@ namespace LerningExcersice
             Console.Write("Enter Lastname? ");
             string strLastname = Console.ReadLine();
 
-            string FirstLast =  strFirstname + " " + strLastname;
+            string FirstLast = strFirstname + " " + strLastname;
             return FirstLast;
         }
 
@@ -165,7 +173,7 @@ namespace LerningExcersice
             string fox1 = a.ToLower();
             string fox2 = char.ToUpper(fox1[0]) + fox1.Substring(1);
             string fox3 = fox2.Replace("quick ", "brown ");
-            String fox4 = fox3.Insert(30, "lazy ");
+            string fox4 = fox3.Insert(30, "lazy ");
             return fox4;
         }
 
@@ -173,7 +181,7 @@ namespace LerningExcersice
         {
             String str = "Arrays are very common in programming, they look something like: [1,2,3,4,5]";
             int i = str.IndexOf('[');
-            string str1= str.Substring(i);
+            string str1 = str.Substring(i);
             string str2 = str1.Remove(3, 4);
             string str3 = str2.Insert(6, ",6,7,8,9,10");
             //string theend2 = theend.Length -1;
@@ -188,16 +196,17 @@ namespace LerningExcersice
             Console.Write("Enter second number? ");
             int secondNumber = Convert.ToInt32(Console.ReadLine());
 
-            if (firstNumber > secondNumber)  {
+            if (firstNumber > secondNumber)
+            {
                 int numberDiff = (firstNumber - secondNumber);
                 int numberSum = firstNumber + secondNumber;
                 int numberProd = firstNumber * secondNumber;
 
                 double numberRatio = firstNumber / (double)secondNumber;
 
-                Console.WriteLine ("First number highest: " + firstNumber);
+                Console.WriteLine("First number highest: " + firstNumber);
                 Console.WriteLine("Seconnd number lowest: " + secondNumber);
-                Console.WriteLine ("Difference: " + numberDiff);
+                Console.WriteLine("Difference: " + numberDiff);
                 Console.WriteLine("Sum: " + numberSum);
                 Console.WriteLine("Product:" + numberProd);
                 Console.WriteLine("Ration: " + numberRatio);
@@ -225,10 +234,10 @@ namespace LerningExcersice
             double radius = double.Parse(Console.ReadLine());
 
             double pi = Math.PI;
-            
+
             //double area = pi * (radius * radius);
             double area = pi * Math.Pow(radius, 2);
-            Console.WriteLine("The Area is {0:0.00}" , area);
+            Console.WriteLine("The Area is {0:0.00}", area);
 
             double volume = (4 * pi * Math.Pow(radius, 3)) / 3;
             Console.WriteLine("The Volume is {0:0.00}", volume);
@@ -255,7 +264,7 @@ namespace LerningExcersice
             Console.WriteLine("What is your name?");
             string yourName = Console.ReadLine();
 
-            Console.WriteLine("Welcom " + yourName +",\nWhen are you born? (year)");
+            Console.WriteLine("Welcom " + yourName + ",\nWhen are you born? (year)");
             int birthYear = Convert.ToInt32(Console.ReadLine());
             //double birtYear = double.Parse(Console.ReadLine() ?? "");
             int age = DateTime.Now.Year - birthYear;
@@ -371,9 +380,9 @@ namespace LerningExcersice
                 Console.ResetColor();
             }
             else
-            { 
+            {
                 double output = numberOne / numberTwo;
-                Console.WriteLine (output);
+                Console.WriteLine(output);
             }
 
             return;
@@ -386,7 +395,7 @@ namespace LerningExcersice
 
             if (number > 0)
             {
-                for (int i=0; i<=number; i++)
+                for (int i = 0; i <= number; i++)
                 {
                     if (IsOdd(i))
                     {
@@ -439,18 +448,22 @@ namespace LerningExcersice
             Console.Write("\n");
             for (int i = 1; i <= 10; i++)
             {
-                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.BackgroundColor = ConsoleColor.Cyan;
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.Write(i + "\t");
                 Console.ResetColor();
                 for (int t = 2; t <= 10; t++)
                 {
-                    Console.BackgroundColor = ConsoleColor.Gray;
+                    Console.BackgroundColor = ConsoleColor.Cyan;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(i*t + "\t");
+                    Console.Write(i * t + "\t");
                     Console.ResetColor();
                 }
-                Console.Write(" \n\n");
+                Console.Write(" \n");
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.Write(" \t\t\t\t\t\t\t\t\t\t");
+                Console.ResetColor();
+                Console.Write(" \n");
             }
         }
 
@@ -485,7 +498,69 @@ namespace LerningExcersice
             }
         }
 
+        private static void RunExcercise14()
+        {
+            bool stay = true;
+            double result = 0;
+            int i = 0;
 
+            while (stay)
+            {
+                Console.Write("Enter a number: ");
+                double number = double.Parse(Console.ReadLine() ?? "");
+                if (number == -1)
+                {
+                    stay = false;
+                    Console.WriteLine("Sum: " + result);
+                    Console.WriteLine("Avarage: " + result / i);
+                }
+                else
+                {
+                    result = result + number;
+                    i++;
+                    //Console.WriteLine("Sum: " + result);
+                    //Console.WriteLine("Avarage: " + result/i);
+                }
+
+
+            }
+
+
+
+
+        }
+
+        //
+        // 15-17 Optional
+        //
+
+        private static void RunExcercise18()
+        {
+            int i = 0;
+            int x = 0;
+            int[] numbers = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+            double[] numbers2 = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+            double[] numbers3 = new double[10];
+            Random rnd = new Random();
+
+            Console.WriteLine("\n");
+
+            foreach (int value in numbers)
+            {
+                int card = rnd.Next(value);
+                //Console.WriteLine(card);
+                numbers3[i] = card;
+                i++;
+            }
+            foreach (double value2 in numbers3)
+            {
+                Console.WriteLine(numbers3[x] + "\t" + (numbers2[x] / value2));
+                x++;
+            }
+        }
+
+
+        // next
 
 
 
