@@ -95,6 +95,9 @@ namespace LerningExcersice
                         case 18:
                             RunExcercise18();
                             break;
+                        case 19:
+                            RunExcercise19();
+                            break;
 
                         case -1:
 
@@ -559,9 +562,128 @@ namespace LerningExcersice
             }
         }
 
+        private static void RunExcercise19()
+        {
+            bool keepAlive = true;
+            bool debug = false;
 
+            int[] currency  = new int[10] { 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1 }; // Swedish currency in array 
+
+            Random random = new Random();  // Get random cust
+            int cost = random.Next(1,1000);
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Money to pay: " + cost + "kr.");
+
+            while (keepAlive)
+            {
+                int pay = AskUserForNumberX("Enter the sum to pay");
+
+                if  (pay == cost) // Pay same amount
+                {
+                    keepAlive = false;
+                }
+                else if (pay < cost) // Pay to little
+                {
+                    Console.WriteLine("You payed to little. You must pay " + cost + "kr.");
+                }
+                else
+                {
+                    int moneyBack = pay - cost;
+                    Console.WriteLine("Calculated change: " + moneyBack);
+                    Console.WriteLine("Coins distribution:");
+
+                    foreach (int money in currency)
+                    {
+                        if (debug) // Debug info
+                        {
+                            Console.WriteLine("Pay: " + pay);
+                            Console.WriteLine("Cost: " + cost);
+                            Console.WriteLine("Back: " + moneyBack);
+                            Console.WriteLine("Array Money: " + money);
+                        }
+
+                        int change = moneyBack / money;
+
+                        if (debug) // Debug info
+                        {
+                            Console.WriteLine("Number: " + change);
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                        }
+                        
+                        if (change >= 1)
+                        {
+                            moneyBack = moneyBack - (change * money);
+                        }
+
+                        Console.WriteLine(money + " coins = " + change);
+
+                        if (debug) // Debug info
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+
+                    }
+                    keepAlive = false;
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        //21
         // next
 
+        // ----------------
+        // --- Methods ----
+        // ----------------
+
+        // Kssageline with color ( )
+        static void DisplayMessage(string message, ConsoleColor color = ConsoleColor.White)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
+            //Console.WriteLine("\n\n  Press any key to continue...\n");
+            //Console.ReadKey();
+        }
+
+        // Input string (19)
+        static string AskUserForX(string x)
+        {
+            string input = "";
+
+            while (input.Length == 0)
+            {
+                Console.Write(x + ": "); //Ask for text with input string
+                input = Console.ReadLine();
+            }
+
+            return input;
+        }
+
+        // Input number (19)
+        static int AskUserForNumberX(string x)
+        {
+            int number = 0;
+            bool noNumber = true;
+            while (noNumber)
+            {
+                try
+                {
+                    number = Convert.ToInt32(AskUserForX(x)); // Ask for number with string
+                    noNumber = false;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Not a number. Please try once more.");
+                }
+            }
+
+            return number;
+
+        }
 
 
     }
